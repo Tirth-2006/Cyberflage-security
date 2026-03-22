@@ -1,0 +1,27 @@
+{
+  "protected_paths": [
+    "./test_folder"
+  ],
+  "thresholds": {
+    "MEDIUM": 30,
+    "HIGH": 60,
+    "CRITICAL": 85
+  },
+  "risk": {
+    "decay_factor": 0.98,
+    "signal_weight_scale": 1.0,
+    "feature_weight_scale": 0.25,
+    "feature_weights": {
+      "signal_count": 1.0,
+      "total_signal_weight": 0.2,
+      "max_signal_weight": 0.1
+    }
+  },
+  "processing": {
+    "max_events_per_cycle": 5000
+  },
+  "safety": {
+    "destructive_actions_enabled": false,
+    "destructive_acknowledged": false
+  }
+}

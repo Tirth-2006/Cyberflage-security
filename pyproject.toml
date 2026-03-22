@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cyberflage"
-version = "0.1.8"
-description = "Modular CyberFlage package"
+name = "cyberflage-security"
+version = "0.1.0"
+description = "CyberFlage modular security project"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.scripts]
-cyberflage = "cyberflage.__main__:main"
+cyberflage-security = "main:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
