@@ -1,230 +1,162 @@
-# CyberFlage
 
-**Understand threats. Not just detect them.**
+```markdown
+# 🚀 CyberFlage – Deception-Based Cybersecurity System
 
-CyberFlage is an explainable cybersecurity system that models behavior, computes risk transparently, and safely redirects attackers using decoy environments.
+CyberFlage is a deception-driven cybersecurity system inspired by camouflage strategies found in nature (like chameleons and cuttlefish). Instead of only blocking attackers, it misleads them by switching to a controlled fake environment, protecting real assets while observing malicious behavior.
 
-It is not a traditional antivirus.
-It is a **behavior-driven, explainable security system** designed for learning, testing, and controlled response workflows.
-
----
-
-## ⚡ Quick Start
-
-```bash
-pip install cyberflage
-cyberflage start
-cyberflage start --demo
-```
+> "Don’t just defend. Deceive."
 
 ---
 
-## 🧠 Core Concept
+## 🧠 Problem Statement
 
-CyberFlage follows a structured pipeline:
+Traditional security systems focus on:
+- Blocking unauthorized access  
+- Detecting known threats  
+- Raising alerts after intrusion  
 
-```
-Event → Signal → Feature → Risk → Action
-```
+However, modern attackers:
+- Bypass traditional defenses  
+- Operate stealthily  
+- Exploit systems before detection  
 
-* **Event** → raw system activity
-* **Signal** → suspicious patterns detected
-* **Feature** → measurable attributes
-* **Risk** → quantified score with explanation
-* **Action** → safe, controlled response
-
----
-
-## 🔥 What Makes CyberFlage Different
-
-| Traditional Security Tools | CyberFlage               |
-| -------------------------- | ------------------------ |
-| Black-box alerts           | Explainable risk scoring |
-| Reactive detection         | Behavior-driven analysis |
-| Destructive responses      | Safe, reversible actions |
-| Limited transparency       | Full reasoning output    |
-
----
-
-## 🖥 Example Output
-
-```bash
-cyberflage start --run-once
-```
-
-```
---------------------------------
-System Status
---------------------------------
-
-Signals:
-- Suspicious file burst detected
-
-Risk Score: 67.4 (HIGH)
-
-Action:
-- Deploy active deception traps.
-- Decoy environment activated successfully.
-
-Explanation:
-- Risk 52.00 -> 67.40 (+signal burst)
-- +10.00 feature:signal_count
-- +5.40 feature:total_signal_weight
-- Risk = 67.40
-
-Mode: DECOY_ACTIVE
---------------------------------
-```
-
----
-
-## 🛡 Safety First
-
-CyberFlage is designed to be **safe by default**:
-
-* Non-destructive mode enabled by default
-* No file deletion
-* Rename-based isolation (no copying/overwriting)
-* Full restore capability
-
-Even when execution is enabled, actions are **controlled and reversible**.
+CyberFlage introduces a **deception-first approach** to:
+- Confuse attackers  
+- Delay malicious actions  
+- Collect behavioral intelligence  
 
 ---
 
 ## ⚙️ How It Works
 
-1. Monitor configured folders
-2. Detect suspicious patterns
-3. Compute risk score with explanation
-4. Trigger safe response (if needed)
-5. Optionally activate decoy environment
-6. Allow full restore of original state
+1. Monitors system behavior and access patterns  
+2. Detects anomalies such as:
+   - Unknown user access  
+   - IP mismatch  
+   - Suspicious file activity  
+3. Activates deception layer:
+   - Switches to decoy (fake environment)  
+4. Logs attacker activity for analysis  
 
 ---
 
-## 🧪 Demo Mode
+## 🔥 Features
 
-Run a simulated scenario:
-
-```bash
-cyberflage start --demo
-```
-
-This demonstrates:
-
-* signal generation
-* risk evolution
-* decision making
-* response behavior
+- 🕵️ Behavioral anomaly detection  
+- 🎭 Dynamic decoy environment switching  
+- 📁 Protected vs fake folder system  
+- 📊 Activity logging and monitoring  
+- ⚙️ Config-driven architecture  
+- 🔐 Educational cybersecurity simulation  
 
 ---
 
-## 🔁 Restore Original State
+## 🏗️ Project Structure
 
-If decoy mode is activated:
-
-```bash
-cyberflage restore
 ```
 
-This safely restores the original environment.
+cyberflage-security/
+│
+├── cyberflage/
+│   ├── app.py              # Core logic
+│   ├── config.py           # Configuration handling
+│   └── **init**.py
+│
+├── tests/                  # Unit tests
+├── config.json             # User configuration
+├── main.py                 # Entry point
+└── README.md
 
----
-
-## ⚙️ Configuration
-
-Create a `config.json`:
-
-```json
-{
-  "protected_paths": ["C:\\Users\\YourName\\Desktop\\test_folder"],
-  "decoy_path": "C:\\Users\\YourName\\Desktop\\decoy_folder",
-  "safety": {
-    "destructive_actions_enabled": true
-  }
-}
-```
-
-Run with config:
-
-```bash
-cyberflage start --config-file config.json
 ```
 
 ---
 
-## 📁 Project Structure
+## 🚀 Getting Started
+
+### 1. Clone the Repository
 
 ```
-cyberflage/
-├── core/           # decision logic, signals, risk
-├── network/        # monitoring system
-├── deception/      # decoy execution engine
-├── alerts/         # alert handling
-├── persistence/    # state saving
-├── dashboard/      # optional web dashboard
+
+git clone [https://github.com/Tirth-2006/Cyberflage-security.git](https://github.com/Tirth-2006/Cyberflage-security.git)
+cd Cyberflage-security
+
+```
+
+### 2. Install Dependencies
+
+```
+
+pip install -r requirements.txt
+
+```
+
+### 3. Run the Project
+
+```
+
+python main.py
+
 ```
 
 ---
 
-## 📊 Features
+## ⚡ Example Output
 
-* Explainable risk scoring
-* Behavior-based detection
-* Safe decoy execution
-* Restore mechanism
-* CLI workflows (start, demo, restore)
-* Configurable thresholds
-* Structured output for analysis
+```
+
+[INFO] Monitoring started...
+[ALERT] Suspicious access detected
+User: unknown
+IP mismatch: TRUE
+Action: Switching to decoy environment
+[LOG] Activity recorded successfully
+
+```
 
 ---
 
-## 🚀 Use Cases
+## 🎯 Use Cases
 
-* Learning cybersecurity concepts
-* Demonstrating behavior-based detection
-* Testing defensive strategies
-* Building explainable security systems
+- Cybersecurity learning and research  
+- Demonstrating deception-based defense systems  
+- Simulating attacker behavior safely  
+- Educational projects and hackathons  
 
 ---
 
-## 📄 Documentation
+## 🔮 Future Improvements
 
-Detailed guide available:
-
-```
-Cyberflage-detailedUserGuide.pdf
-```
+- Machine Learning-based anomaly detection  
+- Advanced behavioral profiling  
+- Real-time alert system (email / dashboard)  
+- SCADA / ICS security integration  
+- Visualization dashboard for attack logs  
 
 ---
 
 ## ⚠️ Disclaimer
 
-CyberFlage is designed for **educational and research purposes**.
+This project is intended for **educational and research purposes only**.
 
-* Do NOT use on production systems
-* Always test in controlled environments
-* The author is not responsible for misuse
-
----
-
-## 🧠 Philosophy
-
-CyberFlage does not try to “block everything”.
-
-Instead, it focuses on:
-
-> understanding behavior → explaining risk → responding safely
+- Do NOT deploy in production environments  
+- Do NOT use for malicious purposes  
+- The author is not responsible for misuse  
 
 ---
 
-## 👤 Author
+## 👨‍💻 Author
 
-Tirth Patel
-CyberFlage Project
+Tirth Patel 
+IT Engineering Student  
 
 ---
 
-## ⭐ If you find this useful
+## ⭐ Support
 
-Give the repo a star — it helps visibility and motivates further development.
+If you found this project interesting, consider giving it a ⭐ on GitHub.
+```
+
+---
+
+
+If this repo still looks average after this, it won’t be the README’s fault anymore.
