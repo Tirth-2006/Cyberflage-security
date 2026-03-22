@@ -57,9 +57,9 @@ def simulate_suspicious(cf: CyberFlage) -> None:
 def simulate_attack(cf: CyberFlage) -> None:
     print("\n=== SCENARIO: CRITICAL ATTACK ===")
     folder = _target_folder(cf)
-    _create_burst(folder, "attack", 60)
-    _rename_burst(folder, "attack", "renamed", 45)
-    _delete_burst(folder, "renamed", 30)
+    _create_burst(folder, "attack", 150)
+    _rename_burst(folder, "attack", "renamed", 120)
+    _delete_burst(folder, "renamed", 100)
     for i in range(8):
         state = cf.run_once()
         print(f"Cycle {i+1}")
