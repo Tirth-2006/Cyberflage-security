@@ -1,74 +1,230 @@
-````md
 # CyberFlage
 
-CyberFlage is an educational cybersecurity project that monitors sensitive directories for suspicious filesystem activity and responds using decoy-based deception techniques.
+**Understand threats. Not just detect them.**
 
-The system detects abnormal access patterns or blacklisted processes, generates honey files, and can optionally perform atomic directory swaps to mislead potential attackers. A safe simulation mode is enabled by default.
+CyberFlage is an explainable cybersecurity system that models behavior, computes risk transparently, and safely redirects attackers using decoy environments.
 
----
-
-## Features
-
-- Real-time filesystem monitoring using Watchdog  
-- Honey file and decoy directory generation  
-- Behavioral detection (high-frequency access patterns)  
-- Environmental detection (blacklisted processes)  
-- Multi-channel alerting (Discord, Slack, Email, CanaryTokens)  
-- Safe simulation mode (default)  
-- Optional live mode with atomic directory swapping  
+It is not a traditional antivirus.
+It is a **behavior-driven, explainable security system** designed for learning, testing, and controlled response workflows.
 
 ---
 
-## Installation
-
-Install required dependencies:
-````
-````bash
-pip install watchdog psutil requests
-````
-
----
-
-## Usage
-
-### Simulation Mode (Recommended)
+## ⚡ Quick Start
 
 ```bash
-python cyberflage.py --protected /path/to/protected --decoy /path/to/decoy
+pip install cyberflage
+cyberflage start
+cyberflage start --demo
 ```
 
-No filesystem changes are made in this mode.
+---
 
-### Live Mode (Use With Extreme Caution)
+## 🧠 Core Concept
+
+CyberFlage follows a structured pipeline:
+
+```
+Event → Signal → Feature → Risk → Action
+```
+
+* **Event** → raw system activity
+* **Signal** → suspicious patterns detected
+* **Feature** → measurable attributes
+* **Risk** → quantified score with explanation
+* **Action** → safe, controlled response
+
+---
+
+## 🔥 What Makes CyberFlage Different
+
+| Traditional Security Tools | CyberFlage               |
+| -------------------------- | ------------------------ |
+| Black-box alerts           | Explainable risk scoring |
+| Reactive detection         | Behavior-driven analysis |
+| Destructive responses      | Safe, reversible actions |
+| Limited transparency       | Full reasoning output    |
+
+---
+
+## 🖥 Example Output
 
 ```bash
-python cyberflage.py --protected /path/to/protected --decoy /path/to/decoy --allow-destructive
+cyberflage start --run-once
 ```
 
-This mode renames directories and should only be used in controlled test environments.
+```
+--------------------------------
+System Status
+--------------------------------
+
+Signals:
+- Suspicious file burst detected
+
+Risk Score: 67.4 (HIGH)
+
+Action:
+- Deploy active deception traps.
+- Decoy environment activated successfully.
+
+Explanation:
+- Risk 52.00 -> 67.40 (+signal burst)
+- +10.00 feature:signal_count
+- +5.40 feature:total_signal_weight
+- Risk = 67.40
+
+Mode: DECOY_ACTIVE
+--------------------------------
+```
 
 ---
 
-## Project Structure
+## 🛡 Safety First
 
-* `cyberflage.py` – main application logic
-* `decoy/` – generated decoy and honey files (ignored by git)
-* `protected/` – monitored directories (ignored by git)
+CyberFlage is designed to be **safe by default**:
 
----
+* Non-destructive mode enabled by default
+* No file deletion
+* Rename-based isolation (no copying/overwriting)
+* Full restore capability
 
-## Disclaimer
-
-This project is intended for **educational and research purposes only**.
-Destructive mode is disabled by default.
-Do **not** use on production systems.
-The author is not responsible for misuse.
+Even when execution is enabled, actions are **controlled and reversible**.
 
 ---
 
-## License
+## ⚙️ How It Works
 
-This project is licensed under the MIT License.
+1. Monitor configured folders
+2. Detect suspicious patterns
+3. Compute risk score with explanation
+4. Trigger safe response (if needed)
+5. Optionally activate decoy environment
+6. Allow full restore of original state
 
+---
 
+## 🧪 Demo Mode
 
+Run a simulated scenario:
+
+```bash
+cyberflage start --demo
+```
+
+This demonstrates:
+
+* signal generation
+* risk evolution
+* decision making
+* response behavior
+
+---
+
+## 🔁 Restore Original State
+
+If decoy mode is activated:
+
+```bash
+cyberflage restore
+```
+
+This safely restores the original environment.
+
+---
+
+## ⚙️ Configuration
+
+Create a `config.json`:
+
+```json
+{
+  "protected_paths": ["C:\\Users\\YourName\\Desktop\\test_folder"],
+  "decoy_path": "C:\\Users\\YourName\\Desktop\\decoy_folder",
+  "safety": {
+    "destructive_actions_enabled": true
+  }
+}
+```
+
+Run with config:
+
+```bash
+cyberflage start --config-file config.json
+```
+
+---
+
+## 📁 Project Structure
+
+```
+cyberflage/
+├── core/           # decision logic, signals, risk
+├── network/        # monitoring system
+├── deception/      # decoy execution engine
+├── alerts/         # alert handling
+├── persistence/    # state saving
+├── dashboard/      # optional web dashboard
+```
+
+---
+
+## 📊 Features
+
+* Explainable risk scoring
+* Behavior-based detection
+* Safe decoy execution
+* Restore mechanism
+* CLI workflows (start, demo, restore)
+* Configurable thresholds
+* Structured output for analysis
+
+---
+
+## 🚀 Use Cases
+
+* Learning cybersecurity concepts
+* Demonstrating behavior-based detection
+* Testing defensive strategies
+* Building explainable security systems
+
+---
+
+## 📄 Documentation
+
+Detailed guide available:
+
+```
+Cyberflage-detailedUserGuide.pdf
+```
+
+---
+
+## ⚠️ Disclaimer
+
+CyberFlage is designed for **educational and research purposes**.
+
+* Do NOT use on production systems
+* Always test in controlled environments
+* The author is not responsible for misuse
+
+---
+
+## 🧠 Philosophy
+
+CyberFlage does not try to “block everything”.
+
+Instead, it focuses on:
+
+> understanding behavior → explaining risk → responding safely
+
+---
+
+## 👤 Author
+
+Tirth Patel
+CyberFlage Project
+
+---
+
+## ⭐ If you find this useful
+
+Give the repo a star — it helps visibility and motivates further development.
