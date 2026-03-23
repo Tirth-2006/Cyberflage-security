@@ -18,6 +18,7 @@ CyberFlage Security is designed for **educational, simulation, and research use*
 - [Extending the Project](#extending-the-project)
 - [Roadmap](#roadmap)
 - [Security & Safety Notes](#security--safety-notes)
+- [Collaborator Guide](#collaborator-guide)
 - [License](#license)
 
 ## Overview
@@ -72,6 +73,9 @@ Cyberflage-security/
 │
 ├── tests/
 │   └── test_detector.py
+│
+├── docs/
+│   └── UserGuide.md
 │
 ├── main.py
 ├── requirements.txt
@@ -202,6 +206,12 @@ Suggested extension points:
 - Do not deploy directly into production environments without hardening.
 - Avoid storing secrets in plain text configs.
 - Prefer environment variables or secret managers for sensitive values.
+
+## Collaborator Guide
+
+For contributor setup, runbooks, troubleshooting, and GSoC collaboration workflow, see:
+
+- [`docs/UserGuide.md`](docs/UserGuide.md)
 
 ## License
 
