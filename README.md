@@ -19,6 +19,7 @@ CyberFlage Security is designed for **educational, simulation, and research use*
 - [Roadmap](#roadmap)
 - [Security & Safety Notes](#security--safety-notes)
 - [Collaborator Guide](#collaborator-guide)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Overview
@@ -81,6 +82,7 @@ Cyberflage-security/
 ├── requirements.txt
 ├── pyproject.toml
 ├── README.md
+├── CONTRIBUTING.md
 ├── LICENSE
 └── .gitignore
 ```
@@ -212,6 +214,12 @@ Suggested extension points:
 For contributor setup, runbooks, troubleshooting, and GSoC collaboration workflow, see:
 
 - [`docs/UserGuide.md`](docs/UserGuide.md)
+
+## Contributing
+
+For PR workflow and contribution rules, see:
+
+- [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ## License
 
