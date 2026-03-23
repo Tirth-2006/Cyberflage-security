@@ -2,7 +2,7 @@
 
 This document describes the current architecture of CyberFlage Security.
 
-## High-Level Component Diagram
+## High-Level Runtime Component Diagram
 
 ```mermaid
 flowchart LR
@@ -15,9 +15,7 @@ flowchart LR
     RS --> ACT[Action Decision\nmonitor / raise_alert / escalate / activate_decoy]
 
     APP --> PERSIST[Persistence Layer\nstate + feature logs]
-    APP --> SIM[scripts/simulate_attack.py]
-
-    T[tests/test_detector.py] --> DET
+    C --> SIM[scripts/simulate_attack.py\nOptional runtime script]
 ```
 
 ## Runtime Data Flow
@@ -54,6 +52,15 @@ sequenceDiagram
     CLI-->>User: summary output
 ```
 
+## Test Architecture (Non-Runtime)
+
+```mermaid
+flowchart LR
+    T[tests/test_detector.py] --> DET[cyberflage/detector.py]
+```
+
+> Tests are development-time validation artifacts, not runtime dependencies.
+
 ## Responsibilities by File
 
 - `main.py`: command-line entry and user-facing run flow
@@ -61,7 +68,7 @@ sequenceDiagram
 - `cyberflage/detector.py`: scoring logic and level/action mapping
 - `cyberflage/utils.py`: config defaults, merge, validation/load helpers
 - `scripts/simulate_attack.py`: scenario-driven simulation runs
-- `tests/test_detector.py`: detector behavior checks
+- `tests/test_detector.py`: detector behavior checks (test-time only)
 
 ## Notes for GSoC Collaborators
 
