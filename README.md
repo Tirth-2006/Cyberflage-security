@@ -1,10 +1,8 @@
-
-```markdown
 # CyberFlage Security
 
 A modular, deception-aware cybersecurity framework for detecting suspicious behavior, scoring risk, and triggering defensive actions.
 
-CyberFlage Security is designed for **educational, simulation, and research use**. It helps demonstrate how modern defense systems can move beyond passive monitoring into active response strategies.
+CyberFlage Security is designed for **educational, simulation, and research use**. It demonstrates how modern defense can move from passive monitoring to explainable, action-oriented response.
 
 ## Table of Contents
 
@@ -17,7 +15,6 @@ CyberFlage Security is designed for **educational, simulation, and research use*
 - [Usage](#usage)
 - [Testing](#testing)
 - [Threat Evaluation Flow](#threat-evaluation-flow)
-- [Extending the Project](#extending-the-project)
 - [Roadmap](#roadmap)
 - [Security & Safety Notes](#security--safety-notes)
 - [Collaborator Guide](#collaborator-guide)
@@ -26,36 +23,38 @@ CyberFlage Security is designed for **educational, simulation, and research use*
 
 ## Overview
 
-CyberFlage Security uses a modular pipeline to:
+CyberFlage Security uses a clear pipeline to convert activity into response:
 
 1. Ingest behavioral signals
-2. Convert them into weighted risk
+2. Compute weighted risk
 3. Classify threat level
-4. Recommend or trigger actions
+4. Recommend or trigger action
 
-The project is intentionally structured for maintainability and extension, so you can evolve it from demo simulations to more advanced analytics and integrations.
+This design keeps the project maintainable, explainable, and easy to extend for GSoC-sized work.
 
 ## Key Capabilities
 
-- **Signal-based detection model** with weighted scoring
-- **Risk classification** using configurable thresholds (`MEDIUM`, `HIGH`, `CRITICAL`)
-- **Action mapping** (e.g., `monitor`, `raise_alert`, `escalate`, `activate_decoy`)
-- **Config-driven behavior** via JSON
-- **Modular Python package** for import or CLI usage
-- **Simulation script** for fast demonstration
-- **Basic test coverage** for detector behavior
+- Signal-based detection with weighted scoring
+- Configurable thresholds (`MEDIUM`, `HIGH`, `CRITICAL`)
+- Action mapping (`monitor`, `raise_alert`, `escalate`, `activate_decoy`)
+- Config-driven behavior via JSON
+- Importable Python package
+- Scenario simulation script for fast demos
+- Unit tests for detector behavior
 
 ## Architecture
 
-CyberFlage follows a clean modular design:
+Core modules:
 
-- `core.py` orchestrates app behavior
-- `detector.py` handles threat evaluation logic
-- `utils.py` handles config loading/building
-- `scripts/simulate_attack.py` demonstrates scenario execution
-- `tests/test_detector.py` validates detector outputs
+- `core.py`: orchestrator (`add_signal`, `run_once`)
+- `detector.py`: risk evaluation and action decision
+- `utils.py`: config loading and build helpers
+- `scripts/simulate_attack.py`: runnable scenarios
+- `tests/test_detector.py`: detector tests
 
-This separation keeps business logic isolated from I/O and supports easy refactoring.
+Diagram:
+
+- [`docs/SystemArchitecture.md`](docs/SystemArchitecture.md)
 
 ## Repository Structure
 
@@ -78,7 +77,8 @@ Cyberflage-security/
 │   └── test_detector.py
 │
 ├── docs/
-│   └── UserGuide.md
+│   ├── UserGuide.md
+│   └── SystemArchitecture.md
 │
 ├── main.py
 ├── requirements.txt
@@ -96,13 +96,13 @@ Cyberflage-security/
 - Python 3.10+
 - `pip`
 
-### Option A: Install dependencies only
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Option B: Install as editable package (recommended for development)
+### Editable install (recommended for development)
 
 ```bash
 pip install -e .
@@ -110,42 +110,41 @@ pip install -e .
 
 ## Configuration
 
-Use the provided template:
+Copy the template:
 
 ```bash
 cp config/config.example.json config/config.json
 ```
 
-Then edit `config/config.json` as needed.
+Windows PowerShell:
 
-### Example configuration
-
-```json
-{
-  "protected_paths": ["./test_folder"],
-  "thresholds": {
-    "MEDIUM": 30,
-    "HIGH": 60,
-    "CRITICAL": 85
-  }
-}
+```powershell
+Copy-Item config\config.example.json config\config.json
 ```
+
+Then edit `config/config.json` as needed.
 
 ## Usage
 
-### Run with main entry point
+### Main runner
 
 ```bash
-python main.py --config config/config.example.json
+python main.py --config config/config.json
 ```
 
-### Run attack simulation
+### Simulation
 
 ```bash
 python scripts/simulate_attack.py
 ```
 
-### Use as an importable package
+### Package CLI (after install)
+
+```bash
+cyberflage-security --config config/config.json
+```
+
+### Import usage
 
 ```python
 from cyberflage import CyberFlage, build_config
@@ -157,14 +156,11 @@ config = build_config({
 app = CyberFlage(config)
 app.add_signal("file_create_burst", 25.0)
 app.add_signal("rename_burst", 12.0)
-
 state = app.run_once()
 print(state)
 ```
 
 ## Testing
-
-Run unit tests:
 
 ```bash
 pytest tests/test_detector.py
@@ -172,58 +168,39 @@ pytest tests/test_detector.py
 
 ## Threat Evaluation Flow
 
-CyberFlage internally maps behavior using this sequence:
-
 ```text
 Event -> Signal -> Risk Score -> Level -> Action
 ```
 
-Where:
-
-- **Event**: observed system behavior (e.g., burst writes)
-- **Signal**: normalized detector input with weight
+- **Event**: observed behavior (example: burst writes)
+- **Signal**: normalized weighted input
 - **Risk Score**: aggregated signal weight
 - **Level**: LOW / MEDIUM / HIGH / CRITICAL
 - **Action**: monitor / raise_alert / escalate / activate_decoy
 
-## Extending the Project
-
-Suggested extension points:
-
-- Add new signal types in `detector.py`
-- Add new action routing in `core.py`
-- Add enriched config validation in `utils.py`
-- Add integration adapters (SIEM, webhook, dashboard)
-- Add additional tests for edge cases and scenario coverage
-
 ## Roadmap
 
-- Stronger anomaly models
-- Streamed event ingestion
+- Sequence-based anomaly modeling
+- Adaptive threshold tuning
 - Dashboard/API integration
-- Richer persistence and audit trails
-- Optional ML-assisted signal weighting
+- Richer persistence and audit logs
+- Optional ML-assisted scoring
 
 ## Security & Safety Notes
 
-- This project is for **educational/research use**.
-- Do not deploy directly into production environments without hardening.
-- Avoid storing secrets in plain text configs.
-- Prefer environment variables or secret managers for sensitive values.
+- Educational/research project (not production-ready by default)
+- Do not run destructive workflows on production assets
+- Do not store secrets in plain JSON configs
+- Use controlled test directories
 
 ## Collaborator Guide
-
-For contributor setup, runbooks, troubleshooting, and GSoC collaboration workflow, see:
 
 - [`docs/UserGuide.md`](docs/UserGuide.md)
 
 ## Contributing
 
-For PR workflow and contribution rules, see:
-
 - [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ## License
 
-This project is licensed under the terms of the `LICENSE` file in this repository.
-```
+Licensed under the terms in [`LICENSE`](LICENSE).
