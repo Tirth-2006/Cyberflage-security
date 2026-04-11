@@ -44,7 +44,7 @@ This design keeps the project maintainable, explainable, and easy to extend for 
 
 ## Architecture
 
-Core modules:
+Core Modules:
 
 - `core.py`: orchestrator (`add_signal`, `run_once`)
 - `detector.py`: risk evaluation and action decision
